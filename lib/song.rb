@@ -13,11 +13,13 @@ class Song
   def self.create
     song = self.new
     @@all << song
+    song
   end
   
   def self.new_by_name(name)
     song = self.new
     song.name = name
+    song
   end
   
   def self.create_by_name(name)
@@ -30,25 +32,22 @@ class Song
   def self.find_by_name(name)
     song = @@all.collect do |x|
       if x.name == name
-        x 
+        x
+      else
+        return false
       end
       song
     end 
   end
   
   def self.find_or_create_by_name(name)
-    song = @@all.collect do |x|
-      if x.name == name
-        x 
-      else
-        nil
-      end
-    end
-    if song == nil
-      song = self.new
-      song.name = name
+    song = self.find_by_name(name)
+    if song == false
+      song = self.create_by_name(name)
+    else
       song
     end
+    song
   end
   
   def self.alphabetical
