@@ -33,7 +33,7 @@ class Song
     song = nil
     @@all.collect do |x|
       if x.name == name
-        song = x
+        return x
       else
         song = false
       end
