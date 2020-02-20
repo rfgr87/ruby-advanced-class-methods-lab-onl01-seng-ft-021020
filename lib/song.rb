@@ -53,6 +53,11 @@ class Song
   
   def self.alphabetical
     sorted = @@all.sort_by{|obj| obj.name}
+    return sorted
+  end
+  
+  def self.new_from_filename(filename)
+    songarray = filename.split()
   
     
         
