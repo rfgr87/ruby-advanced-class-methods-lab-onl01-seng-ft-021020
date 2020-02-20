@@ -64,7 +64,7 @@ class Song
   end
   
   def self.create_from_filename(filename)
-    song_array = filename.split(/[ - ,.mp3]/)
+    song_array = filename.split(/\ - |\.mp3/)
     song = self.new
     song.name = song_array[1]
     song.artist_name = song_array[0]
@@ -76,5 +76,3 @@ class Song
     @@all.clear
   end
 end
-
-split(/\. |\? |! /)
